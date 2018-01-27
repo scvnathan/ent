@@ -32,22 +32,24 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             m_Character = GetComponent<ThirdPersonCharacter>();
         }
 
+		// Adding variable for player numbers to select different axes
+		public string playerNumber;
+		
 
         private void Update()
         {
             if (!m_Jump)
             {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+				m_Jump = CrossPlatformInputManager.GetButtonDown("Jump_P" + playerNumber);
             }
         }
-
 
         // Fixed update is called in sync with physics
         private void FixedUpdate()
         {
             // read inputs
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            float v = CrossPlatformInputManager.GetAxis("Vertical");
+            float h = CrossPlatformInputManager.GetAxis("Horizontal_P" + playerNumber);
+			float v = CrossPlatformInputManager.GetAxis("Vertical_P" + playerNumber);
             bool crouch = Input.GetKey(KeyCode.C);
 
             // calculate move direction to pass to character

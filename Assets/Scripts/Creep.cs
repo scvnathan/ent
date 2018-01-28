@@ -1,15 +1,20 @@
-﻿using Events;
+﻿using System.Collections.Generic;
+using Events;
 using UnityEngine;
 
 public class Creep : MonoBehaviour {
 
 	[SerializeField, ReadOnly]
-	private int currentCreep;
-	public int CurrentCreep => currentCreep;
+	private int currentResources;
+	public int CurrentResources => currentResources;
 	
 	private int victoryCreep;
 	[Range(1,10)]
 	public int numberOfCreepSpreadsUntilVictory = 3;
+
+	[ReadOnly]
+	public int creepStage;
+	private List<int> creepStages = new List<int>();
 
 	private void Awake() {
 		victoryCreep = GameState.Instance.numberOfPlayers * 50;
@@ -24,16 +29,20 @@ public class Creep : MonoBehaviour {
 	}
 
 	private void TrackGrowth(ResourceData resourceData) {
-		currentCreep += resourceData.value;
-		if (currentCreep % (victoryCreep / numberOfCreepSpreadsUntilVictory) == 0) {
+		currentResources += resourceData.value;
+		if (currentResources % (victoryCreep / numberOfCreepSpreadsUntilVictory) == 0) {
 			Grow();
 		}
 	}
 
 	public void Grow() {
+		//.6
+		//5
+		//10
 		//PlayerEvents.InvokeJump(this);
 		//PlayerEvents.OnJump += (couchPlayer) => { }
 		
+		//LeanTween.
 		//TODO: grow
 	}
 }

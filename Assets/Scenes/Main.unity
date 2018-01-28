@@ -1656,52 +1656,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1197511881789644, guid: d29362be975324944b3efb9d2f51f5ba, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 1296666054182954, guid: d29362be975324944b3efb9d2f51f5ba, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 1096013671295304, guid: d29362be975324944b3efb9d2f51f5ba, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 1145762882221284, guid: d29362be975324944b3efb9d2f51f5ba, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 1498827072578992, guid: d29362be975324944b3efb9d2f51f5ba, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 1871819462302462, guid: d29362be975324944b3efb9d2f51f5ba, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 1103108164135768, guid: d29362be975324944b3efb9d2f51f5ba, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 1096013671295304, guid: d29362be975324944b3efb9d2f51f5ba, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64905016463260508, guid: d29362be975324944b3efb9d2f51f5ba,
-        type: 2}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4763399892694214, guid: d29362be975324944b3efb9d2f51f5ba, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 64401569438985150, guid: d29362be975324944b3efb9d2f51f5ba,
-        type: 2}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d29362be975324944b3efb9d2f51f5ba, type: 2}
   m_IsPrefabParent: 0

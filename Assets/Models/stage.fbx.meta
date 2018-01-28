@@ -16,6 +16,11 @@ ModelImporter:
     100016: mannequin
     100018: plane_collider
     100020: playArea2_low.001
+    100022: PlayArea_east
+    100024: PlayArea_north
+    100026: PlayArea_south
+    100028: PlayArea_west
+    100030: waterPlane_outer
     400000: lake_collider
     400002: mountain_low
     400004: playArea2_low
@@ -27,6 +32,11 @@ ModelImporter:
     400016: mannequin
     400018: plane_collider
     400020: playArea2_low.001
+    400022: PlayArea_east
+    400024: PlayArea_north
+    400026: PlayArea_south
+    400028: PlayArea_west
+    400030: waterPlane_outer
     2100000: No Name
     2100002: Material
     2100004: ViveBaseMaterial.001
@@ -40,6 +50,11 @@ ModelImporter:
     2300014: mannequin
     2300016: plane_collider
     2300018: playArea2_low.001
+    2300020: PlayArea_east
+    2300022: PlayArea_north
+    2300024: PlayArea_south
+    2300026: PlayArea_west
+    2300028: waterPlane_outer
     3300000: lake_collider
     3300002: mountain_low
     3300004: playArea2_low
@@ -50,6 +65,11 @@ ModelImporter:
     3300014: mannequin
     3300016: plane_collider
     3300018: playArea2_low.001
+    3300020: PlayArea_east
+    3300022: PlayArea_north
+    3300024: PlayArea_south
+    3300026: PlayArea_west
+    3300028: waterPlane_outer
     4300000: volcano_low
     4300002: volcano_collider
     4300004: mountain_low
@@ -60,6 +80,11 @@ ModelImporter:
     4300014: HTCVive.001
     4300016: plane_collider
     4300018: playArea2_low.001
+    4300020: PlayArea_north
+    4300022: PlayArea_east
+    4300024: PlayArea_south
+    4300026: PlayArea_west
+    4300028: waterPlane_outer
   externalObjects: {}
   materials:
     importMaterials: 1

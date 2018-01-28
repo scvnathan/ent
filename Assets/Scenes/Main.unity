@@ -734,6 +734,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: cc59a77347989464e998cc403fee33e0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 72b44c75b6f0efe41bba28503dc5312d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc59a77347989464e998cc403fee33e0, type: 3}
   m_IsPrefabParent: 0
@@ -2235,6 +2239,10 @@ Prefab:
       propertyPath: m_Name
       value: SpaceCactus (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: cc59a77347989464e998cc403fee33e0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 72b44c75b6f0efe41bba28503dc5312d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc59a77347989464e998cc403fee33e0, type: 3}
   m_IsPrefabParent: 0
@@ -4321,6 +4329,10 @@ Prefab:
       propertyPath: m_Name
       value: SpaceCactus (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: cc59a77347989464e998cc403fee33e0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 72b44c75b6f0efe41bba28503dc5312d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc59a77347989464e998cc403fee33e0, type: 3}
   m_IsPrefabParent: 0
@@ -6002,6 +6014,10 @@ Prefab:
       propertyPath: m_Name
       value: SpaceCactus (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: cc59a77347989464e998cc403fee33e0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 72b44c75b6f0efe41bba28503dc5312d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc59a77347989464e998cc403fee33e0, type: 3}
   m_IsPrefabParent: 0

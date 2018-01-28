@@ -8,7 +8,5 @@ namespace Events {
 			var h = OnDeposit;
 			h?.Invoke(resourceData);
 		}
-		
-		
 	}
 }

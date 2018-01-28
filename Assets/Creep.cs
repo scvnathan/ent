@@ -2,9 +2,19 @@
 using UnityEngine;
 
 public class Creep : MonoBehaviour {
-	public int CurrentCreepValue { get; private set; }
-	public int VictoryCreep = 0;
+
+	[SerializeField, ReadOnly]
+	private int currentCreep;
+	public int CurrentCreep => currentCreep;
 	
+	private int victoryCreep;
+	[Range(1,10)]
+	public int numberOfCreepSpreadsUntilVictory = 3;
+
+	private void Awake() {
+		victoryCreep = GameState.Instance.numberOfPlayers * 50;
+	}
+
 	private void OnEnable() {
 		ResourceEvents.OnDeposit += TrackGrowth;
 	}
@@ -14,10 +24,16 @@ public class Creep : MonoBehaviour {
 	}
 
 	private void TrackGrowth(ResourceData resourceData) {
-		CurrentCreepValue += resourceData.value;
+		currentCreep += resourceData.value;
+		if (currentCreep % (victoryCreep / numberOfCreepSpreadsUntilVictory) == 0) {
+			Grow();
+		}
 	}
 
 	public void Grow() {
+		//PlayerEvents.InvokeJump(this);
+		//PlayerEvents.OnJump += (couchPlayer) => { }
 		
+		//TODO: grow
 	}
 }

@@ -20,6 +20,15 @@ public class Transmitter : MonoBehaviour {
 	}
 
 	private void OnEnable() {
+		PlayerEvents.OnTransmission += OnTransmission;
+	}
+	
+	private void OnDisable() {
+		PlayerEvents.OnTransmission -= OnTransmission;
+	}
+
+	private void OnTransmission(CouchPlayer obj) {
+		Transmit(obj, 0.1f);
 	}
 
 	public void Transmit(CouchPlayer player, float wait = 1f, bool perFrame = false) {

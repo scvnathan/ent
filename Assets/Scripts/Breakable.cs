@@ -16,7 +16,6 @@ public class Breakable : MonoBehaviour {
 
 	// Update is called once per frame
 	void OnCollisionEnter() {
-		Debug.Log((this.lastVelocity - rb.velocity).magnitude);
 		if ((this.lastVelocity - rb.velocity).magnitude > breakThreshhold) {
 			Break();
 		}

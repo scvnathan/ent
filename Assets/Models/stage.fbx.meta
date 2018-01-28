@@ -15,6 +15,7 @@ ModelImporter:
     100014: HTCVive.001
     100016: mannequin
     100018: plane_collider
+    100020: playArea2_low.001
     400000: lake_collider
     400002: mountain_low
     400004: playArea2_low
@@ -25,6 +26,7 @@ ModelImporter:
     400014: HTCVive.001
     400016: mannequin
     400018: plane_collider
+    400020: playArea2_low.001
     2100000: No Name
     2100002: Material
     2100004: ViveBaseMaterial.001
@@ -37,6 +39,7 @@ ModelImporter:
     2300012: HTCVive.001
     2300014: mannequin
     2300016: plane_collider
+    2300018: playArea2_low.001
     3300000: lake_collider
     3300002: mountain_low
     3300004: playArea2_low
@@ -46,6 +49,7 @@ ModelImporter:
     3300012: HTCVive.001
     3300014: mannequin
     3300016: plane_collider
+    3300018: playArea2_low.001
     4300000: volcano_low
     4300002: volcano_collider
     4300004: mountain_low
@@ -55,6 +59,7 @@ ModelImporter:
     4300012: mannequin
     4300014: HTCVive.001
     4300016: plane_collider
+    4300018: playArea2_low.001
   externalObjects: {}
   materials:
     importMaterials: 1

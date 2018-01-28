@@ -9,22 +9,53 @@ ModelImporter:
     100002: mannequin
     100004: Play Area_low
     100006: //RootNode
+    100008: lake_collider
+    100010: mountain_low
+    100012: playArea2_low
+    100014: pyramid_collider
+    100016: volcano_collider
+    100018: volcano_low
     400000: HTCVive.001
     400002: mannequin
     400004: Play Area_low
     400006: //RootNode
+    400008: lake_collider
+    400010: mountain_low
+    400012: playArea2_low
+    400014: pyramid_collider
+    400016: volcano_collider
+    400018: volcano_low
     2100000: TT_checkerMap_material.001
     2100002: Material
     2100004: ViveBaseMaterial.001
+    2100006: No Name
     2300000: HTCVive.001
     2300002: mannequin
     2300004: Play Area_low
+    2300006: lake_collider
+    2300008: mountain_low
+    2300010: playArea2_low
+    2300012: pyramid_collider
+    2300014: volcano_collider
+    2300016: volcano_low
     3300000: HTCVive.001
     3300002: mannequin
     3300004: Play Area_low
+    3300006: lake_collider
+    3300008: mountain_low
+    3300010: playArea2_low
+    3300012: pyramid_collider
+    3300014: volcano_collider
+    3300016: volcano_low
     4300000: Play Area_low
     4300002: mannequin
     4300004: HTCVive.001
+    4300006: volcano_low
+    4300008: volcano_collider
+    4300010: mountain_low
+    4300012: pyramid_collider
+    4300014: playArea2_low
+    4300016: lake_collider
   externalObjects: {}
   materials:
     importMaterials: 1

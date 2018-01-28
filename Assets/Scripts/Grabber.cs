@@ -39,7 +39,7 @@ public class Grabber : MonoBehaviour {
 
 	private Coroutine watchForGrabRoutine;
 	private Coroutine watchForLetGoRoutine;
-	
+
 	private int layerMasks;
 
 	private void Awake() {
@@ -109,7 +109,6 @@ public class Grabber : MonoBehaviour {
 			StopCoroutine(watchForLetGoRoutine);
 			watchForLetGoRoutine = null;
 		}
-		
 	}
 
 	private IEnumerator WatchForGrab() {
@@ -159,18 +158,39 @@ public class Grabber : MonoBehaviour {
 
 	//TODO: Change from parenting to using joint
 	private void AttachObjectToHand(GameObject item) {
+		GrabType.GrabTypes type = GrabType.GrabTypes.Solid;
+		GrabType grabTypeSpecifier = item.GetComponent<GrabType>();
+		if (grabTypeSpecifier) {
+			type = grabTypeSpecifier.grabType;
+		}
+
 		grabbedObject = item.transform;
-		this.joint = item.AddComponent<SpringJoint>();
-		this.joint.spring = Mathf.Infinity;
-		this.joint.minDistance = Vector3.Distance(item.transform.position, hand.position);
-		this.joint.maxDistance = this.joint.minDistance;
 
 		grabbedObjectsRigidbody = item.GetComponent<Rigidbody>();
 		grabbedObjectsRigidbody.drag = 2f;
 		grabbedObjectsRigidbody.angularDrag = 2f;
 		grabbedObjectsRigidbody.isKinematic = false;
-		//grabbedObjectsRigidbody.useGravity = false;
-		this.joint.connectedBody = handsRigidbody;
+		grabbedObjectsRigidbody.detectCollisions = true;
+		
+		switch (type) {
+			case GrabType.GrabTypes.Solid:
+				item.transform.SetParent(hand);
+				item.transform.localPosition = Vector3.zero;
+				grabbedObjectsRigidbody.isKinematic = true;
+				
+				break;
+			case GrabType.GrabTypes.Wobble:
+				this.joint = item.AddComponent<SpringJoint>();
+				this.joint.spring = Mathf.Infinity;
+				this.joint.minDistance = Vector3.Distance(item.transform.position, hand.position);
+				this.joint.maxDistance = this.joint.minDistance;
+				//grabbedObjectsRigidbody.useGravity = false;
+				this.joint.connectedBody = handsRigidbody;
+				break;
+			default:
+				throw new ArgumentOutOfRangeException();
+		}
+
 
 		watchForLetGoRoutine = StartCoroutine(WatchForLettingGo());
 	}
@@ -186,12 +206,30 @@ public class Grabber : MonoBehaviour {
 
 	private void DetachObjectFromHand() {
 		StopWatchingForUnGrab();
-		this.joint.connectedBody = null;
-		Destroy(this.joint,0f);
-		
+		GrabType.GrabTypes type;
+		GrabType grabTypeSpecifier = grabbedObject.GetComponentInChildren<GrabType>();
+		if (grabTypeSpecifier) {
+			type = grabTypeSpecifier.grabType;
+		} else {
+			type = GrabType.GrabTypes.Solid;
+		}
+
+		switch (type) {
+			case GrabType.GrabTypes.Solid:
+				grabbedObject.parent = null;
+				break;
+			case GrabType.GrabTypes.Wobble:
+				this.joint.connectedBody = null;
+				Destroy(this.joint, 0f);
+				break;
+			default:
+				throw new ArgumentOutOfRangeException();
+		}
+
 		grabbedObjectsRigidbody.useGravity = true;
 		grabbedObjectsRigidbody.isKinematic = false;
 		grabbedObjectsRigidbody.velocity = grabbedObjectsRigidbody.velocity + velocity * 2f;
+
 		//TODO:
 		//grabbedObjectsRigidbody.angularVelocity = handsRigidbody.angularVelocity * 0.8f;			
 		grabbedObject = null;

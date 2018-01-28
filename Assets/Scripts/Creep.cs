@@ -25,28 +25,10 @@ public class Creep : MonoBehaviour {
 	private const string CUTOFF = "_Cutoff";
 
 	private async void Awake() {
-		//victoryCreep = GameState.Instance.numberOfPlayers * 50;
-		victoryCreep = 2* 50;
+		victoryCreep = GameState.Instance.numberOfPlayers * 50;
 		
 		this.creepMaterial = this.GetComponent<MeshRenderer>().sharedMaterial;
 		SetInitialCreepStage();
-		
-		await new WaitForSeconds(5f);
-		Grow();
-
-		await new WaitForSeconds(5f);
-
-		Grow();
-		
-		await new WaitForSeconds(5f);
-
-		Grow();
-		
-		await new WaitForSeconds(5f);
-
-		Grow();
-
-
 	}
 
 	private void SetInitialCreepStage() {

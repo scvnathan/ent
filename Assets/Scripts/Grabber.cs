@@ -225,6 +225,8 @@ public class Grabber : MonoBehaviour {
 			type = GrabType.GrabTypes.Solid;
 		}
 
+		grabbedObjectsRigidbody.detectCollisions = true;
+		
 		switch (type) {
 			case GrabType.GrabTypes.Solid:
 				grabbedObject.parent = null;

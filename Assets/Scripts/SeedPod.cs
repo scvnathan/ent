@@ -15,6 +15,7 @@ public class SeedPod : MonoBehaviour
 		if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Joystick1Button0)))
 		{
 			Player.transform.SetParent(null);
+			this.GetComponent<Breakable>().Break();
 			Destroy(gameObject);
 			Player.SetActive(true);
 		}

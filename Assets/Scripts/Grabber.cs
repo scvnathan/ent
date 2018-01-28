@@ -26,21 +26,29 @@ public class Grabber : MonoBehaviour {
 	Transform grabbedObject = null;
 	private Rigidbody grabbedObjectsRigidbody;
 	private Rigidbody handsRigidbody;
-	
-	private bool canGrab;
-	private GameObject objectInRange;
+	private float originalGrabbedMass;
+
 	private Transform hand;
-	
+
 	private Vector3 oldPos;
 	private Vector3 newPos;
 	private Vector3 velocity;
-	
 
+	public List<string> grabbableLayers;
+	private SpringJoint joint;
+
+	private Coroutine watchForGrabRoutine;
+	private Coroutine watchForLetGoRoutine;
+	
+	private int layerMasks;
 
 	private void Awake() {
 		this.handCollider = GetComponent<SphereCollider>();
 		handsRigidbody = GetComponent<Rigidbody>();
 		hand = transform.parent;
+
+
+		layerMasks = LayerMask.GetMask(grabbableLayers.ToArray());
 	}
 
 	bool ShouldTryToGrab() {
@@ -62,34 +70,61 @@ public class Grabber : MonoBehaviour {
 			}
 		}
 
-		return false;		
+		return false;
 	}
 
 
-private bool IsGrabbableObject(GameObject obj) {
-		return obj.gameObject.layer == LayerMask.NameToLayer("Grabbable");
+	private bool IsGrabbableObject(GameObject obj) {
+		var l = obj.gameObject.layer;
+		for (var i = 0; i < grabbableLayers.Count; i++) {
+			if (l == LayerMask.NameToLayer(grabbableLayers[i])) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	private void OnTriggerEnter(Collider other) {
-		if (IsGrabbableObject(other.gameObject)) {
-			StartCoroutine(WatchForGrab());
-		}		
+		if (grabbedObject == null && watchForGrabRoutine == null && IsGrabbableObject(other.gameObject)) {
+			watchForGrabRoutine = StartCoroutine(WatchForGrab());
+		}
+	}
+
+	private void OnTriggerExit(Collider other) {
+		if (grabbedObject == null && IsGrabbableObject(other.gameObject)) {
+			StopWatchingForGrab();
+		}
 	}
 
 	private void StopWatchingForGrab() {
-		StopCoroutine(WatchForGrab());
+		if (watchForGrabRoutine != null) {
+			StopCoroutine(watchForGrabRoutine);
+			watchForGrabRoutine = null;
+		}
+	}
+
+	private void StopWatchingForUnGrab() {
+		if (watchForLetGoRoutine != null) {
+			StopCoroutine(watchForLetGoRoutine);
+			watchForLetGoRoutine = null;
+		}
+		
 	}
 
 	private IEnumerator WatchForGrab() {
-		while (true) {
-			Collider[] colliders = Physics.OverlapSphere(transform.position + Offset, handCollider.radius, 1 << GrabbableLayer);
+		var watch = true;
+		while (watch) {
+			Collider[] colliders = Physics.OverlapSphere(transform.position + Offset, handCollider.radius, layerMasks);
 			if (colliders.Length == 0) {
 				StopWatchingForGrab();
-				break;
+				watch = false;
 			}
 
 			if (ShouldTryToGrab()) {
+				StopWatchingForGrab();
 				AttachObjectToHand(GetClosestItem(colliders));
+				watch = false;
 			}
 
 			yield return null;
@@ -124,35 +159,42 @@ private bool IsGrabbableObject(GameObject obj) {
 
 	//TODO: Change from parenting to using joint
 	private void AttachObjectToHand(GameObject item) {
-		item.transform.SetParent(hand);
 		grabbedObject = item.transform;
+		this.joint = item.AddComponent<SpringJoint>();
+		this.joint.spring = Mathf.Infinity;
+		this.joint.minDistance = Vector3.Distance(item.transform.position, hand.position);
+		this.joint.maxDistance = this.joint.minDistance;
+
 		grabbedObjectsRigidbody = item.GetComponent<Rigidbody>();
-		if (grabbedObjectsRigidbody) {
-			grabbedObjectsRigidbody.isKinematic = true;
-		}
-		
-		StartCoroutine(WatchForLettingGo());
+		grabbedObjectsRigidbody.drag = 2f;
+		grabbedObjectsRigidbody.angularDrag = 2f;
+		grabbedObjectsRigidbody.isKinematic = false;
+		//grabbedObjectsRigidbody.useGravity = false;
+		this.joint.connectedBody = handsRigidbody;
+
+		watchForLetGoRoutine = StartCoroutine(WatchForLettingGo());
 	}
 
 	private void CalculateVelocity() {
 		newPos = transform.position;
-		var media =  (newPos - oldPos);
-		velocity = media /Time.deltaTime;
+		var media = (newPos - oldPos);
+		velocity = media / Time.deltaTime;
 		oldPos = newPos;
 		newPos = transform.position;
-		
 		//TODO:Angular velocity
 	}
-	
-	private void DetachObjectFromHand() {
-		grabbedObject.parent = null;
-		if (grabbedObjectsRigidbody) {
-			grabbedObjectsRigidbody.isKinematic = false;
-			grabbedObjectsRigidbody.velocity = velocity * 1.5f;
-			//TODO:
-			//grabbedObjectsRigidbody.angularVelocity = handsRigidbody.angularVelocity * 0.8f;			
-		}
 
+	private void DetachObjectFromHand() {
+		StopWatchingForUnGrab();
+		this.joint.connectedBody = null;
+		Destroy(this.joint,0f);
+		
+		grabbedObjectsRigidbody.useGravity = true;
+		grabbedObjectsRigidbody.isKinematic = false;
+		grabbedObjectsRigidbody.velocity = grabbedObjectsRigidbody.velocity + velocity * 2f;
+		//TODO:
+		//grabbedObjectsRigidbody.angularVelocity = handsRigidbody.angularVelocity * 0.8f;			
+		grabbedObject = null;
 		grabbedObjectsRigidbody = null;
 	}
 }

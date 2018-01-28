@@ -34,7 +34,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         }
 
 		// Adding variable for player numbers to select different axes
-		public string playerNumber;
+		public int playerNumber;
 		
 
         private void Update()

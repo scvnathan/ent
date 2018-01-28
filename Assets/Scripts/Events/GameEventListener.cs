@@ -18,7 +18,7 @@ public class GameEventListener : MonoBehaviour
 		GameEvent.UnregisterListener(this);
 	}
  
-	public void RaiseEvent()
+	public virtual void RaiseEvent()
 	{
 		Response.Invoke();
 	}

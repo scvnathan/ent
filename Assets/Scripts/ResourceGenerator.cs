@@ -36,6 +36,6 @@ public class ResourceGenerator : MonoBehaviour {
 	private void Spawn(GameObject obj) {
 		Vector2 location = Random.insideUnitCircle * radius;
 		var spawnedResource = Instantiate(obj);
-		spawnedResource.transform.position = new Vector3(location.x, 1f, location.y);
+		spawnedResource.transform.position = transform.position + new Vector3(location.x, 1f, location.y);
 	}
 }

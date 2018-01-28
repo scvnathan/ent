@@ -29,7 +29,9 @@ public class CouchPlayer : MonoBehaviour {
 	}
 
 	public ResourceData DetachResource() {
-		StopCoroutine(trackingRoutine);
+		if (trackingRoutine != null) {
+			StopCoroutine(trackingRoutine);
+		}
 		
 		var removedResource = attachedResourceData;
 		attachedResourceData = null;

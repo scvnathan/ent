@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameState : MonoBehaviour {
 
 	public int numberOfPlayers;
+
 	public static GameState Instance;
 
 	void Awake() {

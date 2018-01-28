@@ -1,0 +1,204 @@
+fileFormatVersion: 2
+guid: 3b6bb201522615a4ea3ffd5331678657
+timeCreated: 1517120146
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: COG
+    100002: COG_Handle
+    100004: CompoundPath1
+    100006: CompoundPath2
+    100008: CompoundPath3
+    100010: CompoundPath4
+    100012: CompoundPath5
+    100014: curve1
+    100016: curve10
+    100018: curve11
+    100020: curve12
+    100022: curve2
+    100024: curve3
+    100026: curve4
+    100028: curve5
+    100030: curve6
+    100032: curve7
+    100034: curve8
+    100036: curve9
+    100038: Druid1
+    100040: //RootNode
+    100042: group
+    100044: group1
+    100046: group2
+    100048: L_Arm
+    100050: L_Arm1
+    100052: L_Arm2
+    100054: L_ArmGoal
+    100056: L_ArmHandle
+    100058: L_Foot1
+    100060: L_Foot_Handle
+    100062: L_FootGoal
+    100064: L_leg
+    100066: L_leg1
+    100068: L_leg3
+    100070: L_leg4
+    100072: R_Arm
+    100074: R_Arm1
+    100076: R_Arm2
+    100078: R_ArmGoal
+    100080: R_ArmHandle
+    100082: R_Foot1
+    100084: R_Foot_Handle
+    100086: R_FootGoal
+    100088: R_leg
+    100090: R_leg1
+    100092: R_leg3
+    100094: R_leg4
+    100096: Spine1
+    100098: Spine2
+    100100: Spine3
+    100102: Spine4
+    100104: Spine5
+    100106: transform11
+    100108: transform12
+    100110: transform9
+    400000: COG
+    400002: COG_Handle
+    400004: CompoundPath1
+    400006: CompoundPath2
+    400008: CompoundPath3
+    400010: CompoundPath4
+    400012: CompoundPath5
+    400014: curve1
+    400016: curve10
+    400018: curve11
+    400020: curve12
+    400022: curve2
+    400024: curve3
+    400026: curve4
+    400028: curve5
+    400030: curve6
+    400032: curve7
+    400034: curve8
+    400036: curve9
+    400038: Druid1
+    400040: //RootNode
+    400042: group
+    400044: group1
+    400046: group2
+    400048: L_Arm
+    400050: L_Arm1
+    400052: L_Arm2
+    400054: L_ArmGoal
+    400056: L_ArmHandle
+    400058: L_Foot1
+    400060: L_Foot_Handle
+    400062: L_FootGoal
+    400064: L_leg
+    400066: L_leg1
+    400068: L_leg3
+    400070: L_leg4
+    400072: R_Arm
+    400074: R_Arm1
+    400076: R_Arm2
+    400078: R_ArmGoal
+    400080: R_ArmHandle
+    400082: R_Foot1
+    400084: R_Foot_Handle
+    400086: R_FootGoal
+    400088: R_leg
+    400090: R_leg1
+    400092: R_leg3
+    400094: R_leg4
+    400096: Spine1
+    400098: Spine2
+    400100: Spine3
+    400102: Spine4
+    400104: Spine5
+    400106: transform11
+    400108: transform12
+    400110: transform9
+    2100000: lambert1
+    4300000: Druid1
+    7400000: Signal_wave
+    9500000: //RootNode
+    13700000: Druid1
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

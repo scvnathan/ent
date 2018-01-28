@@ -1,12 +1,14 @@
 using System;
+using Events;
+using Rewired;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
     [RequireComponent(typeof (ThirdPersonCharacter))]
-    public class ThirdPersonUserControl : MonoBehaviour
-    {
+    public class ThirdPersonUserControl : MonoBehaviour {
+        private Player rewiredPlayer;
         private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
         private Transform m_Cam;                  // A reference to the main camera in the scenes transform
         private Vector3 m_CamForward;             // The current forward direction of the camera
@@ -31,6 +33,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             // get the third person character ( this should never be null due to require component )
             m_Character = GetComponent<ThirdPersonCharacter>();
+
+            CouchPlayer couchPlayer = this.GetComponent<CouchPlayer>();
+            rewiredPlayer = ReInput.players.GetPlayer(couchPlayer.PlayerNum);
         }
 
 		// Adding variable for player numbers to select different axes
@@ -41,7 +46,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             if (!m_Jump)
             {
-				m_Jump = CrossPlatformInputManager.GetButtonDown("Jump_P" + playerNumber);
+				//m_Jump = CrossPlatformInputManager.GetButtonDown("Jump_P" + playerNumber);
+                m_Jump = rewiredPlayer.GetButtonDown("Jump");
             }
         }
 
@@ -49,8 +55,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void FixedUpdate()
         {
             // read inputs
-            float h = CrossPlatformInputManager.GetAxis("Horizontal_P" + playerNumber);
-			float v = CrossPlatformInputManager.GetAxis("Vertical_P" + playerNumber);
+            //float h = CrossPlatformInputManager.GetAxis("Horizontal_P" + playerNumber);
+            float h = rewiredPlayer.GetAxis("Horiz");
+            
+            
+			//float v = CrossPlatformInputManager.GetAxis("Vertical_P" + playerNumber);
+			float v = rewiredPlayer.GetAxis("Vert");
             bool crouch = Input.GetKey(KeyCode.C);
 
             // calculate move direction to pass to character

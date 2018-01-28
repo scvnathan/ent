@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.XR;
 
 public class Recenter : MonoBehaviour {
 	public SkinnedMeshRenderer EntMesh;
@@ -8,6 +9,7 @@ public class Recenter : MonoBehaviour {
 
 	void Start () {
 		hmd.parent.position = cameraPosition.position - hmd.position;
+		InputTracking.Recenter();
 //		Vector3 v = EntMesh.bounds.center - hmd.localPosition;
 //		
 //		v.z -= EntMesh.bounds.size.z / 5f;

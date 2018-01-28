@@ -5,6 +5,7 @@ public class CouchPlayer : MonoBehaviour {
 
 	private Coroutine trackingRoutine;
 	private ResourceData attachedResourceData;
+	public int PlayerNum { get; private set; }
 	
 	public void AttachResource(PickupResource pickupResource) {
 		var attachedVisualResource = Instantiate(pickupResource.visualResourceToAttach, Vector3.zero, Quaternion.identity);
@@ -36,5 +37,9 @@ public class CouchPlayer : MonoBehaviour {
 		var removedResource = attachedResourceData;
 		attachedResourceData = null;
 		return removedResource;
+	}
+
+	public void Init(int player) {
+		PlayerNum = player;
 	}
 }

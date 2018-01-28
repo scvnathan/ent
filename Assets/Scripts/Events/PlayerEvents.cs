@@ -9,11 +9,11 @@ namespace Events {
 			h?.Invoke(couchPlayer);
 		}
 
-		public static event Action<CouchPlayer> OnCall;
+		public static event Action<CouchPlayer> OnTransmission;
 
-		public static void InvokeCall(CouchPlayer CouchPlayer){
-			var h = OnCall;
-			h?.Invoke(CouchPlayer);
+		public static void InvokeTransmission(CouchPlayer couchPlayer){
+			var h = OnTransmission;
+			h?.Invoke(couchPlayer);
 		}
 	}
 }

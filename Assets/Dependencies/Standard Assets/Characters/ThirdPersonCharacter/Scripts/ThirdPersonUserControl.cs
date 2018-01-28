@@ -1,6 +1,7 @@
 using System;
 using Events;
 using Rewired;
+using Events;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -14,9 +15,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
+		private bool transmit;
 
 		public Camera couchPlayerCamera;
-
+		public CouchPlayer couchPlayer;
         private void Start()
         {
             // get the transform of the main camera
@@ -49,6 +51,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				//m_Jump = CrossPlatformInputManager.GetButtonDown("Jump_P" + playerNumber);
                 m_Jump = rewiredPlayer.GetButtonDown("Jump");
             }
+
+			if (rewiredPlayer.GetButtonDown("Transmission")) {
+				PlayerEvents.InvokeTransmission(couchPlayer);
+			}
+
         }
 
         // Fixed update is called in sync with physics

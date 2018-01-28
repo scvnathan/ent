@@ -8,5 +8,12 @@ namespace Events {
 			var h = OnJump;
 			h?.Invoke(couchPlayer);
 		}
+
+		public static event Action<CouchPlayer> OnTransmission;
+
+		public static void InvokeTransmission(CouchPlayer couchPlayer){
+			var h = OnTransmission;
+			h?.Invoke(couchPlayer);
+		}
 	}
 }

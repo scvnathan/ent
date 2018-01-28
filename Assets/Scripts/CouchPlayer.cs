@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
-
+using System;
 public class CouchPlayer : MonoBehaviour {
 
 	private Coroutine trackingRoutine;

@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using System;
+using Events;
 using Rewired;
 
 
@@ -13,6 +14,7 @@ public class SeedPod : MonoBehaviour {
 			player.transform.SetParent(null);
 			this.GetComponent<Breakable>().Break();
 			player.gameObject.SetActive(true);
+			SeedpodEvents.InvokeBreak(this.gameObject);
 			Destroy(gameObject);
 		}
 	}

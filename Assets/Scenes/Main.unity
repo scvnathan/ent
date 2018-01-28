@@ -1292,19 +1292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d471d4570e1c46d686c847f4ca667b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1186281113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1186281111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc4d484f3a526a84c859330ba512b67e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentCreep: 0
-  numberOfCreepSpreadsUntilVictory: 3
 --- !u!1001 &1444738179
 Prefab:
   m_ObjectHideFlags: 0
@@ -1656,9 +1643,39 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 23453848937093260, guid: d29362be975324944b3efb9d2f51f5ba,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d29362be975324944b3efb9d2f51f5ba, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1847183862 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1415884732380634, guid: d29362be975324944b3efb9d2f51f5ba,
+    type: 2}
+  m_PrefabInternal: {fileID: 1847183861}
+--- !u!114 &1847183863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1847183862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc4d484f3a526a84c859330ba512b67e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentResources: 0
+  numberOfCreepSpreadsUntilVictory: 3
+  creepStage: 0
+  creepStages:
+  - 20
+  - 10
+  - 5
+  - 0.6
+  creepGrowthSpeed: 2
 --- !u!1 &1917099496
 GameObject:
   m_ObjectHideFlags: 0

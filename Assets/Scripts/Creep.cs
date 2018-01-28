@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Asyncoroutine;
 using Events;
 using UnityEngine;
 
@@ -13,11 +14,43 @@ public class Creep : MonoBehaviour {
 	public int numberOfCreepSpreadsUntilVictory = 3;
 
 	[ReadOnly]
-	public int creepStage;
-	private List<int> creepStages = new List<int>();
+	public int creepStage = 0;
 
-	private void Awake() {
-		victoryCreep = GameState.Instance.numberOfPlayers * 50;
+	[SerializeField]
+	private List<float> creepStages;
+
+	public float creepGrowthSpeed = 2f;
+	private Material creepMaterial;
+
+	private const string CUTOFF = "_Cutoff";
+
+	private async void Awake() {
+		//victoryCreep = GameState.Instance.numberOfPlayers * 50;
+		victoryCreep = 2* 50;
+		
+		this.creepMaterial = this.GetComponent<MeshRenderer>().sharedMaterial;
+		SetInitialCreepStage();
+		
+		await new WaitForSeconds(5f);
+		Grow();
+
+		await new WaitForSeconds(5f);
+
+		Grow();
+		
+		await new WaitForSeconds(5f);
+
+		Grow();
+		
+		await new WaitForSeconds(5f);
+
+		Grow();
+
+
+	}
+
+	private void SetInitialCreepStage() {
+		this.creepMaterial.SetFloat(CUTOFF, creepStages[0]);
 	}
 
 	private void OnEnable() {
@@ -36,13 +69,17 @@ public class Creep : MonoBehaviour {
 	}
 
 	public void Grow() {
-		//.6
-		//5
-		//10
-		//PlayerEvents.InvokeJump(this);
-		//PlayerEvents.OnJump += (couchPlayer) => { }
-		
-		//LeanTween.
-		//TODO: grow
+		creepStage = creepStage + 1;
+		if (creepStage <= creepStages.Count-1) {
+			AnimateGrow(creepStages[creepStage]);
+		}
+	}
+
+	private void AnimateGrow(float nextStageValue) {
+		var currentCreepValue = this.creepMaterial.GetFloat(CUTOFF);
+
+		LeanTween.value(this.gameObject, (float f1, float f2) => {
+			creepMaterial.SetFloat(CUTOFF, f1);
+		}, currentCreepValue, nextStageValue, creepGrowthSpeed).setEaseOutCubic();
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Cinemachine;
 using Rewired;
 using Roomera.Core;
 using UnityEngine;
@@ -9,6 +10,7 @@ using UnityStandardAssets.CrossPlatformInput;
 public class CreatePlayers : MonoBehaviour {
 	public Transform CouchPlayer;
 	[SerializeField] private List<Transform> spawnPoints;
+	public CinemachineTargetGroup targetGroup;
 
 	void Awake() {
 		Transform player;
@@ -21,6 +23,12 @@ public class CreatePlayers : MonoBehaviour {
 			player.GetComponent<CouchPlayer>().Init(i);
 			player.SetParent(transform);
 			player.gameObject.GetComponent<ThirdPersonUserControl>().playerNumber = i;
+
+			targetGroup.m_Targets[i] = new CinemachineTargetGroup.Target {
+				radius = 0,
+				weight = 1,
+				target = player.transform
+			};
 		}
 
 		StartCoroutine(VRDeviceBootstrap.EnableVR());

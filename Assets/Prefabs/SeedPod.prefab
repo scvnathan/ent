@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   proxy: {fileID: 1864758273714738, guid: 7b79cb0168df9154d8c6a879ab890646, type: 2}
-  breakThreshhold: 4
+  breakThreshhold: 3
 --- !u!114 &114695294050387472
 MonoBehaviour:
   m_ObjectHideFlags: 1

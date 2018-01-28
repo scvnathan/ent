@@ -8,7 +8,12 @@ using Rewired;
 
 public class SeedPod : MonoBehaviour {
 	public CouchPlayer player;
+	public GameObject floor;
 
+	public void Start() {
+		Physics.IgnoreCollision(this.GetComponent<SphereCollider>(), floor.GetComponent<MeshCollider>());
+	}
+	
 	void Update() {
 		if (player && ReInput.players.GetPlayer(player.PlayerNum).GetButtonDown("Jump")) {
 			player.transform.SetParent(null);

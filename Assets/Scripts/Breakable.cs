@@ -8,28 +8,28 @@ public class Breakable : MonoBehaviour {
 
 	private GameObject brokenThing;
 	private Vector3 lastVelocity;
+	private Rigidbody rb;
 
 	private void Start() {
-		brokenThing = Instantiate(proxy, Vector3.zero, Quaternion.identity);
-		brokenThing.SetActive(false);
+		this.rb = this.GetComponent<Rigidbody>();
 	}
 
 	// Update is called once per frame
 	void OnCollisionEnter() {
-		if ((this.lastVelocity - this.GetComponent<Rigidbody>().velocity).magnitude > breakThreshhold) {
+		Debug.Log((this.lastVelocity - rb.velocity).magnitude);
+		if ((this.lastVelocity - rb.velocity).magnitude > breakThreshhold) {
 			Break();
 		}
 	}
 
 	public void Break() {
-		//Debug.Log((this.lastVelocity - this.GetComponent<Rigidbody>().velocity).magnitude);
-		this.gameObject.SetActive(false);
+		brokenThing = Instantiate(proxy, Vector3.zero, Quaternion.identity);
 		brokenThing.SetActive(true);
 		brokenThing.transform.SetPositionAndRotation(transform.position, transform.rotation);
-		Destroy(this, 1f);
+		Destroy(this.gameObject, 0f);
 	}
 
 	private void Update() {
-		this.lastVelocity = this.GetComponent<Rigidbody>().velocity;
+		this.lastVelocity = rb.velocity;
 	}
 }

@@ -1,18 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Events;
+using RootMotion;
 using UnityEngine;
 
 public class SeedpodSpawner : MonoBehaviour {
 	[SerializeField] private GameObject seedPod;
-	private int numOfSeedsActive;
+	public int NumOfSeedsActive => pods.Count;
 	private Coroutine spawnerRoutine;
 	private List<GameObject> pods;
+	
+	private WaitForSeconds foursec;
 
-	[Range(1,4)]
-	public int maxPods = 1;
+	public GameObject floor;
+
+	[Range(1, 4)] public int maxPods = 1;
 
 	private void Start() {
+		foursec = new WaitForSeconds(4f);
 		pods = new List<GameObject>();
 		spawnerRoutine = StartCoroutine(BeginSpawning());
 	}
@@ -25,28 +30,29 @@ public class SeedpodSpawner : MonoBehaviour {
 	private void OnDisable() {
 		SeedpodEvents.OnBreak -= OnBroke;
 	}
-	
+
 	private void OnBroke(GameObject obj) {
 		pods.Remove(obj);
 	}
 
 	public IEnumerator BeginSpawning() {
-		while (true) {
-			if (numOfSeedsActive == 0) {
-				var pod = Instantiate(seedPod, transform.position, seedPod.transform.rotation);
-				SeedpodEvents.InvokeSpawn(pod);
-				pods.Add(pod);
-			}
-			yield return null;
+		while (pods.Count < maxPods) {
+			var pod = Instantiate(seedPod, new Vector3(transform.position.x, transform.position.y + seedPod.GetComponent<MeshRenderer>().bounds.extents.y, transform.position.z), seedPod.transform.rotation);
+			var scale = pod.transform.localScale;
+			pod.transform.localScale = Vector3.zero;
+			pod.GetComponent<SeedPod>().floor = floor;
+			SeedpodEvents.InvokeSpawn(pod);
+			pods.Add(pod);
+
+			LeanTween.scale(pod, scale, 1f).setEaseOutBounce();
+			yield return foursec;
 		}
 	}
-	
-	
-	
+
+
 	public void StopSpawning() {
 		if (spawnerRoutine != null) {
 			StopCoroutine(spawnerRoutine);
 		}
 	}
-	
 }

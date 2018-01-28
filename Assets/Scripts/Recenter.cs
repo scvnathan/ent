@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Recenter : MonoBehaviour {
 	public SkinnedMeshRenderer EntMesh;
@@ -8,14 +6,8 @@ public class Recenter : MonoBehaviour {
 
 	public Transform cameraPosition;
 
-	// Use this for initialization
 	void Start () {
 		hmd.parent.position = cameraPosition.position - hmd.position;
-
-		hmd.forward = cameraPosition.forward;
-		//hmd.parent.localPosition = cameraPosition.position;
-
-
 //		Vector3 v = EntMesh.bounds.center - hmd.localPosition;
 //		
 //		v.z -= EntMesh.bounds.size.z / 5f;

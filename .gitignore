@@ -40,3 +40,6 @@ sysinfo.txt
 /Assets/ShaderForge/*
 *.vscode
 *.editorconfig
+
+# Mac files
+.DS_Store

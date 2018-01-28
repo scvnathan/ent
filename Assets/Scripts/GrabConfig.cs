@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
-public class GrabType : MonoBehaviour {
+public class GrabConfig : MonoBehaviour {
 	public enum GrabTypes {
 		Solid,
 		Wobble
 	}
 
 	public GrabTypes grabType;
+	public Transform wobbleAnchor;
 }

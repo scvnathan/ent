@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ae65b954efa2148bca6be3da3e628f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  player: {fileID: 0}
 --- !u!54 &523738142
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -684,6 +684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabType: 0
+  wobbleAnchor: {fileID: 0}
 --- !u!135 &523738144
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -905,6 +906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabType: 0
+  wobbleAnchor: {fileID: 0}
 --- !u!54 &621201068
 Rigidbody:
   m_ObjectHideFlags: 0

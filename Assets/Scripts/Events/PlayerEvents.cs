@@ -1,16 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 
-public class PlayerEvents : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+namespace Events {
+	public static class PlayerEvents {
+		public static event Action<CouchPlayer> OnJump;
 		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		public static void InvokeJump(CouchPlayer couchPlayer) {
+			var h = OnJump;
+			h?.Invoke(couchPlayer);
+		}
 	}
 }

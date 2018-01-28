@@ -28,7 +28,7 @@ public class Grabber : MonoBehaviour {
 	private Rigidbody handsRigidbody;
 	private float originalGrabbedMass;
 
-	private Transform hand;
+	public Transform hand;
 
 	private Vector3 oldPos;
 	private Vector3 newPos;
@@ -45,7 +45,6 @@ public class Grabber : MonoBehaviour {
 	private void Awake() {
 		this.handCollider = GetComponent<SphereCollider>();
 		handsRigidbody = GetComponent<Rigidbody>();
-		hand = transform.parent;
 
 
 		layerMasks = LayerMask.GetMask(grabbableLayers.ToArray());
@@ -54,6 +53,9 @@ public class Grabber : MonoBehaviour {
 	bool ShouldTryToGrab() {
 		for (int i = 0; i < InputAxes.Count; i++) {
 			InputAxis axis = InputAxes[i];
+			Debug.Log(" Trigger down: " + Input.GetAxis(axis.AxisName) + " " + (Input.GetAxis(axis.AxisName) > axis.Threshold));
+			
+			
 			if (Input.GetAxis(axis.AxisName) > axis.Threshold) {
 				return true;
 			}
@@ -65,6 +67,7 @@ public class Grabber : MonoBehaviour {
 	bool ShouldLetGo() {
 		for (int i = 0; i < InputAxes.Count; i++) {
 			InputAxis axis = InputAxes[i];
+			Debug.Log(Input.GetAxis(InputAxes[0].AxisName));
 			if (Input.GetAxis(axis.AxisName) < zeroThreshold) {
 				return true;
 			}
@@ -87,12 +90,13 @@ public class Grabber : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other) {
 		if (grabbedObject == null && watchForGrabRoutine == null && IsGrabbableObject(other.gameObject)) {
-			watchForGrabRoutine = StartCoroutine(WatchForGrab());
+			watchForGrabRoutine = StartCoroutine(WatchForGrab(other.gameObject));
 		}
 	}
 
 	private void OnTriggerExit(Collider other) {
 		if (grabbedObject == null && IsGrabbableObject(other.gameObject)) {
+				Debug.Log("stopping 2");
 			StopWatchingForGrab();
 		}
 	}
@@ -111,18 +115,23 @@ public class Grabber : MonoBehaviour {
 		}
 	}
 
-	private IEnumerator WatchForGrab() {
+	private IEnumerator WatchForGrab(GameObject objNear) {
 		var watch = true;
 		while (watch) {
-			Collider[] colliders = Physics.OverlapSphere(transform.position + Offset, handCollider.radius, layerMasks);
-			if (colliders.Length == 0) {
-				StopWatchingForGrab();
-				watch = false;
-			}
+			
+			
+			//Collider[] colliders = Physics.OverlapSphere(transform.position + handCollider.bounds.center + Offset, handCollider.radius, layerMasks);
+			//Debug.Log("colliders: " + colliders.Length);
+//			if (colliders.Length == 0) {
+//				Debug.Log("stopping");
+//				StopWatchingForGrab();
+//				watch = false;
+//			}
 
+			Debug.Log("check grab");
 			if (ShouldTryToGrab()) {
 				StopWatchingForGrab();
-				AttachObjectToHand(GetClosestItem(colliders));
+				AttachObjectToHand(objNear);
 				watch = false;
 			}
 
@@ -156,8 +165,10 @@ public class Grabber : MonoBehaviour {
 		return closest;
 	}
 
-	//TODO: Change from parenting to using joint
 	private void AttachObjectToHand(GameObject item) {
+		if (item == null) {
+			return;
+		}
 		GrabType.GrabTypes type = GrabType.GrabTypes.Solid;
 		GrabType grabTypeSpecifier = item.GetComponent<GrabType>();
 		if (grabTypeSpecifier) {
@@ -170,7 +181,7 @@ public class Grabber : MonoBehaviour {
 		grabbedObjectsRigidbody.drag = 2f;
 		grabbedObjectsRigidbody.angularDrag = 2f;
 		grabbedObjectsRigidbody.isKinematic = false;
-		grabbedObjectsRigidbody.detectCollisions = true;
+		grabbedObjectsRigidbody.detectCollisions = false;
 		
 		switch (type) {
 			case GrabType.GrabTypes.Solid:
@@ -196,11 +207,11 @@ public class Grabber : MonoBehaviour {
 	}
 
 	private void CalculateVelocity() {
-		newPos = transform.position;
+		newPos = hand.position;
 		var media = (newPos - oldPos);
 		velocity = media / Time.deltaTime;
 		oldPos = newPos;
-		newPos = transform.position;
+		newPos = hand.position;
 		//TODO:Angular velocity
 	}
 
@@ -228,7 +239,7 @@ public class Grabber : MonoBehaviour {
 
 		grabbedObjectsRigidbody.useGravity = true;
 		grabbedObjectsRigidbody.isKinematic = false;
-		grabbedObjectsRigidbody.velocity = grabbedObjectsRigidbody.velocity + velocity * 2f;
+		grabbedObjectsRigidbody.velocity = grabbedObjectsRigidbody.velocity + velocity * 1.75f;
 
 		//TODO:
 		//grabbedObjectsRigidbody.angularVelocity = handsRigidbody.angularVelocity * 0.8f;			

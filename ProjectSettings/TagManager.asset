@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Well
   - Resource
+  - Seedpod
   layers:
   - Default
   - TransparentFX

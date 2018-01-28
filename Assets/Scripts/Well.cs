@@ -8,7 +8,10 @@ public class Well : MonoBehaviour {
 	private void OnTriggerEnter(Collider other) {
 		if (other.CompareTag(Tags.PLAYER_TAG)) {
 			var player = other.GetComponent<CouchPlayer>();
-			Deposit(player.DetachResource());
+			var resource = player.DetachResource();
+			if (resource) {
+				Deposit(resource);
+			}
 		}
 	}
 

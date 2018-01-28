@@ -169,10 +169,10 @@ public class Grabber : MonoBehaviour {
 		if (item == null) {
 			return;
 		}
-		GrabType.GrabTypes type = GrabType.GrabTypes.Solid;
-		GrabType grabTypeSpecifier = item.GetComponent<GrabType>();
-		if (grabTypeSpecifier) {
-			type = grabTypeSpecifier.grabType;
+		GrabConfig.GrabTypes type = GrabConfig.GrabTypes.Solid;
+		GrabConfig grabConfig = item.GetComponent<GrabConfig>();
+		if (grabConfig) {
+			type = grabConfig.grabType;
 		}
 
 		grabbedObject = item.transform;
@@ -184,19 +184,22 @@ public class Grabber : MonoBehaviour {
 		grabbedObjectsRigidbody.detectCollisions = false;
 		
 		switch (type) {
-			case GrabType.GrabTypes.Solid:
+			case GrabConfig.GrabTypes.Solid:
 				item.transform.SetParent(hand);
 				item.transform.localPosition = Vector3.zero;
 				grabbedObjectsRigidbody.isKinematic = true;
 				
 				break;
-			case GrabType.GrabTypes.Wobble:
+			case GrabConfig.GrabTypes.Wobble:
 				this.joint = item.AddComponent<SpringJoint>();
 				this.joint.spring = Mathf.Infinity;
 				this.joint.minDistance = Vector3.Distance(item.transform.position, hand.position);
 				this.joint.maxDistance = this.joint.minDistance;
 				//grabbedObjectsRigidbody.useGravity = false;
 				this.joint.connectedBody = handsRigidbody;
+				if (grabConfig && grabConfig.wobbleAnchor) {
+					this.joint.connectedAnchor = grabConfig.wobbleAnchor.localPosition;
+				}				
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();
@@ -217,21 +220,21 @@ public class Grabber : MonoBehaviour {
 
 	private void DetachObjectFromHand() {
 		StopWatchingForUnGrab();
-		GrabType.GrabTypes type;
-		GrabType grabTypeSpecifier = grabbedObject.GetComponentInChildren<GrabType>();
-		if (grabTypeSpecifier) {
-			type = grabTypeSpecifier.grabType;
+		GrabConfig.GrabTypes type;
+		GrabConfig grabConfigSpecifier = grabbedObject.GetComponentInChildren<GrabConfig>();
+		if (grabConfigSpecifier) {
+			type = grabConfigSpecifier.grabType;
 		} else {
-			type = GrabType.GrabTypes.Solid;
+			type = GrabConfig.GrabTypes.Solid;
 		}
 
 		grabbedObjectsRigidbody.detectCollisions = true;
 		
 		switch (type) {
-			case GrabType.GrabTypes.Solid:
+			case GrabConfig.GrabTypes.Solid:
 				grabbedObject.parent = null;
 				break;
-			case GrabType.GrabTypes.Wobble:
+			case GrabConfig.GrabTypes.Wobble:
 				this.joint.connectedBody = null;
 				Destroy(this.joint, 0f);
 				break;

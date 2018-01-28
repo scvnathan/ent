@@ -65,7 +65,7 @@ Material:
     - _Smoothness: 0.9
     - _Specular: 0.1
     - _WaterDepth: 0.99
-    - _WaterFalloff: -3.6
+    - _WaterFalloff: -7.93
     - _WaterSmoothness: 0.9
     - _WaterSpecular: 0.05
     - __dirty: 0

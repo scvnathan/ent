@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Rewired;
 using Roomera.Core;
 using UnityEngine;
 using UnityStandardAssets.Characters.ThirdPerson;
@@ -11,13 +12,13 @@ public class CreatePlayers : MonoBehaviour {
 
 	void Awake() {
 		Transform player;
-		int numberOfPlayers = GameState.Instance.numberOfPlayers;
-
-		var j = Input.GetJoystickNames();
 		
-		for (int i = 1; i < numberOfPlayers; i++) {
+		int numberOfPlayers = GameState.Instance.numberOfPlayers;
+		
+		for (int i = 0; i < numberOfPlayers; i++) {
 			var spawnPoint = new Vector3(spawnPoints[i].position.x, 1f, spawnPoints[i].position.z);
 			player = Instantiate(CouchPlayer, spawnPoint, CouchPlayer.transform.rotation);
+			player.GetComponent<CouchPlayer>().Init(i);
 			player.SetParent(transform);
 			player.gameObject.GetComponent<ThirdPersonUserControl>().playerNumber = i;
 		}

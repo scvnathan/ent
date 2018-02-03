@@ -26,6 +26,7 @@ public class Breakable : MonoBehaviour {
 		brokenThing.SetActive(true);
 		brokenThing.transform.SetPositionAndRotation(transform.position, transform.rotation);
 		Destroy(this.gameObject, 0f);
+		Destroy(brokenThing, 5f);
 	}
 
 	private void Update() {

@@ -9,12 +9,12 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class CreatePlayers : MonoBehaviour {
 	public Transform CouchPlayer;
+	public Camera couchCam;
 	[SerializeField] private List<Transform> spawnPoints;
 	public CinemachineTargetGroup targetGroup;
 
 	void Awake() {
-		Transform player;
-		
+		Transform player;		
 		int numberOfPlayers = GameState.Instance.numberOfPlayers;
 		
 		for (int i = 0; i < numberOfPlayers; i++) {
@@ -22,8 +22,10 @@ public class CreatePlayers : MonoBehaviour {
 			player = Instantiate(CouchPlayer, spawnPoint, CouchPlayer.transform.rotation);
 			player.GetComponent<CouchPlayer>().Init(i);
 			player.SetParent(transform);
-			player.gameObject.GetComponent<ThirdPersonUserControl>().playerNumber = i;
-
+			var tpuc = player.gameObject.GetComponent<ThirdPersonUserControl>();
+			tpuc.playerNumber = i;
+			tpuc.couchPlayerCamera = couchCam;
+			
 			targetGroup.m_Targets[i] = new CinemachineTargetGroup.Target {
 				radius = 0,
 				weight = 1,

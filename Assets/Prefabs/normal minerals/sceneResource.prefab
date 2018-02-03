@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 64604411858158410}
   - component: {fileID: 65549715315618126}
   - component: {fileID: 54223121527476198}
+  - component: {fileID: 114950922547278096}
   m_Layer: 0
   m_Name: sceneResource
   m_TagString: Resource
@@ -59,7 +60,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 010aefd66f68d7a4c88bbc94f9bba192, type: 3}
+  - {fileID: 2100000, guid: 9357763a54c25ed488f7487689ed5a0e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,3 +141,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualResourceToAttach: {fileID: 1536907688902164, guid: b75fe08519f2a5c4cb9e7ddb6bc07758,
     type: 2}
+--- !u!114 &114950922547278096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1843548762478380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d27cf3bc6ad01b41bada36a0a97c3d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

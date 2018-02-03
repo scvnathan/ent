@@ -9,7 +9,7 @@ public class SeedpodSpawner : MonoBehaviour {
 	public int NumOfSeedsActive => pods.Count;
 	private Coroutine spawnerRoutine;
 	private List<GameObject> pods;
-	
+
 	private WaitForSeconds foursec;
 
 	public GameObject floor;
@@ -23,25 +23,29 @@ public class SeedpodSpawner : MonoBehaviour {
 	}
 
 	private void OnEnable() {
-		SeedpodEvents.OnBreak += OnBroke;
+		BreakEvents.OnBreak += OnBroke;
 	}
 
 
 	private void OnDisable() {
-		SeedpodEvents.OnBreak -= OnBroke;
+		BreakEvents.OnBreak -= OnBroke;
 	}
 
-	private void OnBroke(GameObject obj) {
-		pods.Remove(obj);
+	private void OnBroke(GameObject obj, BreakEvents.BreakableThings breakableThing) {
+		if (breakableThing == BreakEvents.BreakableThings.Walnut) {
+			pods.Remove(obj);
+		}
 	}
 
 	public IEnumerator BeginSpawning() {
 		while (pods.Count < maxPods) {
-			var pod = Instantiate(seedPod, new Vector3(transform.position.x, transform.position.y + seedPod.GetComponent<MeshRenderer>().bounds.extents.y, transform.position.z), seedPod.transform.rotation);
+			var pod = Instantiate(seedPod,
+				new Vector3(transform.position.x, transform.position.y + seedPod.GetComponent<MeshRenderer>().bounds.extents.y, transform.position.z),
+				seedPod.transform.rotation);
 			var scale = pod.transform.localScale;
 			pod.transform.localScale = Vector3.zero;
 			pod.GetComponent<SeedPod>().floor = floor;
-			SeedpodEvents.InvokeSpawn(pod);
+			BreakEvents.InvokeSpawn(pod);
 			pods.Add(pod);
 
 			LeanTween.scale(pod, scale, 1f).setEaseOutBounce();

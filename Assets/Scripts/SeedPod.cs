@@ -18,8 +18,7 @@ public class SeedPod : MonoBehaviour {
 		if (player && ReInput.players.GetPlayer(player.PlayerNum).GetButtonDown("Jump")) {
 			player.transform.SetParent(null);
 			this.GetComponent<Breakable>().Break();
-			player.gameObject.SetActive(true);
-			SeedpodEvents.InvokeBreak(this.gameObject);
+			BreakEvents.InvokeBreak(this.gameObject, BreakEvents.BreakableThings.SeedPod);
 			Destroy(gameObject);
 		}
 	}

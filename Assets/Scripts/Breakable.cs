@@ -21,10 +21,10 @@ public class Breakable : MonoBehaviour {
 		}
 	}
 
-	public void Break() {
-		brokenThing = Instantiate(proxy, Vector3.zero, Quaternion.identity);
+	public void Break(Vector3 offsetPos = default(Vector3)) {
+		brokenThing = Instantiate(proxy, transform.position + offsetPos, transform.rotation);
 		brokenThing.SetActive(true);
-		brokenThing.transform.SetPositionAndRotation(transform.position, transform.rotation);
+		brokenThing.transform.SetPositionAndRotation(transform.position + offsetPos, transform.rotation);
 		Destroy(this.gameObject, 0f);
 		Destroy(brokenThing, 5f);
 	}

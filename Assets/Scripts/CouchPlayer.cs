@@ -24,7 +24,7 @@ public class CouchPlayer : MonoBehaviour {
 	
 	private IEnumerator Track(Transform attachedResourceTransform) {
 		while (true) {
-			attachedResourceTransform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+			attachedResourceTransform.position = new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z);
 			yield return null;
 		}
 	}

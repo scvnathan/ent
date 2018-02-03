@@ -7,6 +7,7 @@ TagManager:
   - Well
   - Resource
   - Seedpod
+  - PlayerHand
   layers:
   - Default
   - TransparentFX

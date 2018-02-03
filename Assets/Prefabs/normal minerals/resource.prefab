@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33686855580898388}
   - component: {fileID: 23784835780474590}
   - component: {fileID: 114695198671544674}
+  - component: {fileID: 114462883455398618}
   m_Layer: 0
   m_Name: resource
   m_TagString: Resource
@@ -56,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 010aefd66f68d7a4c88bbc94f9bba192, type: 3}
+  - {fileID: 2100000, guid: 9357763a54c25ed488f7487689ed5a0e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,6 +84,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1536907688902164}
   m_Mesh: {fileID: 4300000, guid: 010aefd66f68d7a4c88bbc94f9bba192, type: 3}
+--- !u!114 &114462883455398618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536907688902164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d27cf3bc6ad01b41bada36a0a97c3d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114695198671544674
 MonoBehaviour:
   m_ObjectHideFlags: 1

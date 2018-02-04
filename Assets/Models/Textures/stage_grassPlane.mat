@@ -88,7 +88,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _Cutoff: 20
+    - _Cutoff: 17
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
@@ -96,7 +96,7 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
-    - _NormalIntensity: 2.82
+    - _NormalIntensity: 3.32
     - _OcclusionStrength: 1
     - _Parallax: 0.0055
     - _SmoothnessTextureChannel: 0

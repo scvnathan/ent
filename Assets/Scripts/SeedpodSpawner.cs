@@ -48,7 +48,7 @@ public class SeedpodSpawner : MonoBehaviour {
 			BreakEvents.InvokeSpawn(pod);
 			pods.Add(pod);
 
-			LeanTween.scale(pod, scale, 1f).setEaseOutBounce();
+			LeanTween.scale(pod, scale, 2f).setEaseOutBounce();
 			yield return foursec;
 		}
 	}

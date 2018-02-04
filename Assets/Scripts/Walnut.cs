@@ -5,7 +5,7 @@ using UnityEngine;
 public class Walnut : MonoBehaviour {
 	public int resourcesInside = 4;
 	[SerializeField] private GameObject whatsInside;
-	
+
 	private void OnCollisionEnter(Collision other) {
 		if (other.gameObject.CompareTag(Tags.PLAYER_HAND)) {
 			this.GetComponent<Breakable>().Break(new Vector3(0f, .25f, 0f));

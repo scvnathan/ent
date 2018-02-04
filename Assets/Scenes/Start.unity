@@ -531,47 +531,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1311635381
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1311635383}
-  - component: {fileID: 1311635382}
-  m_Layer: 0
-  m_Name: GameState
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1311635382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1311635381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4185ea34754f4c26a43e99f48011c1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numberOfPlayers: 1
---- !u!4 &1311635383
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1311635381}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 303.95706, y: 103.6201, z: 6.547545}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1435323556
 Prefab:
   m_ObjectHideFlags: 0
@@ -619,7 +578,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4905531027627298, guid: 2b9bdc047d98c964a8fc557acd2ac786, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114233692006599208, guid: 2b9bdc047d98c964a8fc557acd2ac786,
         type: 2}
@@ -847,7 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a33e22c70dd4a5a85ed40bb6e220b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: {fileID: 1311635382}
+  inGamePlayers: {fileID: 11400000, guid: c2a5830d199a2a44cbfa520e61233d31, type: 2}
   scene: Main
   PlayerBtnText: {fileID: 411606895}
 --- !u!4 &1748526840

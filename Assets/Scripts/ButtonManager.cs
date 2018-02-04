@@ -6,22 +6,34 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour {
 
-	public GameState gameState;
+	public IntVariable inGamePlayers;
 	public string scene;
 	public Text PlayerBtnText;
+
+	private int defaultPlayers;
+
+
+	private void Awake() {
+		defaultPlayers = inGamePlayers.value;
+		UpdatePlayersText(inGamePlayers.value);
+	}
 
 	public void NewGame() {
 		SceneManager.LoadScene (scene);
 	}
 
 	public void SetPlayers(){
-		int n = gameState.numberOfPlayers;
+		int n = inGamePlayers.value;
 		if (n == 5) {
-			gameState.numberOfPlayers = 2;
+			inGamePlayers.value = defaultPlayers;
 		} else {
-			gameState.numberOfPlayers++;
+			inGamePlayers.value++;
 		}
-		PlayerBtnText.text = "# of Players: " + gameState.numberOfPlayers;
+		UpdatePlayersText(inGamePlayers.value);
+	}
+
+	public void UpdatePlayersText(int num) {
+		PlayerBtnText.text = "Couch Players: " + num;
 	}
 
 }

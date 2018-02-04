@@ -4,7 +4,8 @@ using Events;
 using UnityEngine;
 
 public class Creep : MonoBehaviour {
-
+	public IntVariable inGamePlayers;
+	
 	[SerializeField, ReadOnly]
 	private int currentResources;
 	public int CurrentResources => currentResources;
@@ -25,7 +26,7 @@ public class Creep : MonoBehaviour {
 	private const string CUTOFF = "_Cutoff";
 
 	private async void Awake() {
-		victoryCreep = GameState.Instance.numberOfPlayers * 50;
+		victoryCreep = inGamePlayers.value * 50;
 		
 		this.creepMaterial = this.GetComponent<MeshRenderer>().sharedMaterial;
 		SetInitialCreepStage();
@@ -43,7 +44,7 @@ public class Creep : MonoBehaviour {
 		ResourceEvents.OnDeposit -= TrackGrowth;
 	}
 
-	private void TrackGrowth(ResourceData resourceData) {
+	private void TrackGrowth(ResourceData resourceData, object depositer) {
 		currentResources += resourceData.value;
 		if (currentResources % (victoryCreep / numberOfCreepSpreadsUntilVictory) == 0) {
 			Grow();

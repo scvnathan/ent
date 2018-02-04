@@ -8,6 +8,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 
 public class CreatePlayers : MonoBehaviour {
+	public IntVariable inGamePlayers;
 	public Transform CouchPlayer;
 	public Camera couchCam;
 	[SerializeField] private List<Transform> spawnPoints;
@@ -15,7 +16,7 @@ public class CreatePlayers : MonoBehaviour {
 
 	void Awake() {
 		Transform player;		
-		int numberOfPlayers = GameState.Instance.numberOfPlayers;
+		int numberOfPlayers = inGamePlayers.value;
 		
 		for (int i = 0; i < numberOfPlayers; i++) {
 			var spawnPoint = new Vector3(spawnPoints[i].position.x, 1f, spawnPoints[i].position.z);
@@ -26,11 +27,11 @@ public class CreatePlayers : MonoBehaviour {
 			tpuc.playerNumber = i;
 			tpuc.couchPlayerCamera = couchCam;
 			
-			targetGroup.m_Targets[i] = new CinemachineTargetGroup.Target {
-				radius = 0,
-				weight = 1,
-				target = player.transform
-			};
+//			targetGroup.m_Targets[i] = new CinemachineTargetGroup.Target {
+//				radius = 0,
+//				weight = 1,
+//				target = player.transform
+//			};
 		}
 
 		StartCoroutine(VRDeviceBootstrap.EnableVR());

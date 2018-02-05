@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: f3a3051334b13e043b1ac3fb1dfc2c69
+timeCreated: 1517802622
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Longa Iberica
+  fontNames:
+  - Longa Iberica
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

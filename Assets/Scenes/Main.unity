@@ -734,6 +734,10 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
       value: 30.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 59b65d2fbb1ef7b4fa0b8c80295f741b, type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59b65d2fbb1ef7b4fa0b8c80295f741b, type: 2}
   m_IsPrefabParent: 0
@@ -3701,6 +3705,16 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114178150277754822, guid: 86703df845d9c6344a26a86cec6bf2e7,
+        type: 2}
+      propertyPath: m_text
+      value: Help your tree terraform this decaying planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 114178150277754822, guid: 86703df845d9c6344a26a86cec6bf2e7,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86703df845d9c6344a26a86cec6bf2e7, type: 2}

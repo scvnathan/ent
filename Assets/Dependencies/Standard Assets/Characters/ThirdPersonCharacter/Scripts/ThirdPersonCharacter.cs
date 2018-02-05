@@ -61,7 +61,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson {
 			}
 
 			ScaleCapsuleForCrouching(crouch);
-			PreventStandingInLowHeadroom();
+			//PreventStandingInLowHeadroom();
 
 			// send input and other state parameters to the animator
 			UpdateAnimator(move);
@@ -125,6 +125,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson {
 			// which affects the movement speed because of the root motion.
 			if (m_IsGrounded && move.magnitude > 0) {
 				m_Animator.speed = m_AnimSpeedMultiplier;
+				Debug.Log("step");
 			} else {
 				// don't use that while airborne
 				m_Animator.speed = 1;
@@ -155,7 +156,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson {
 		void ApplyExtraTurnRotation() {
 			// help the character turn faster (this is in addition to root rotation in the animation)
 			float turnSpeed = Mathf.Lerp(m_StationaryTurnSpeed, m_MovingTurnSpeed, m_ForwardAmount);
-			transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
+			transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime * 1.25f, 0);
 		}
 
 

@@ -12,13 +12,17 @@ public class Well : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter(Collider other) {
+		PlayerEntered(other);
+	}
+
+	private void PlayerEntered(Collider other) {
 		if (other.CompareTag(Tags.PLAYER_TAG)) {
 			var player = other.GetComponent<CouchPlayer>();
-			var resource = player.DetachResource();
+			var resource = player?.DetachResource();
 			if (resource) {
 				Deposit(resource, player);
 			}
-		}
+		}		
 	}
 
 	private async void Deposit(ResourceData resourceDataObject, CouchPlayer player) {

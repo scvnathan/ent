@@ -46,7 +46,8 @@ public class SeedpodSpawner : MonoBehaviour {
 					seedPod.transform.rotation);
 				var scale = pod.transform.localScale;
 				pod.transform.localScale = Vector3.zero;
-				pod.GetComponent<SeedPod>().floor = floor;
+				var seedpod = pod.GetComponent<SeedPod>();					
+				seedpod.IgnorePlayers(true);
 				BreakEvents.InvokeSpawn(pod);
 				pods.Add(pod);
 
@@ -54,6 +55,7 @@ public class SeedpodSpawner : MonoBehaviour {
 				
 				LeanTween.scale(pod, scale, 2f).setEaseOutBounce().setOnComplete(() => {
 					spawning = false;
+					seedpod.IgnorePlayers(false);
 				});
 			}
 

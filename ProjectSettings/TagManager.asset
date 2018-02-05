@@ -8,6 +8,8 @@ TagManager:
   - Resource
   - Seedpod
   - PlayerHand
+  - Fire
+  - CouchCam
   layers:
   - Default
   - TransparentFX

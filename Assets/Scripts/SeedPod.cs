@@ -1,36 +1,55 @@
-//MD5Hash:92f300e79504c341c574ca0b42f06041;
-
 using UnityEngine;
-using System;
+using System.Collections.Generic;
 using Events;
 using Rewired;
 
 
 public class SeedPod : MonoBehaviour {
-	public CouchPlayer player;
-	public GameObject floor;
+	public Canvas hintText;
+	public List<CouchPlayer> playersInside;
+	private bool ignorePlayers;
 
-	public void Start() {
-		Physics.IgnoreCollision(this.GetComponent<SphereCollider>(), floor.GetComponent<MeshCollider>());
-	}
-	
 	void Update() {
-		if (player && ReInput.players.GetPlayer(player.PlayerNum).GetButtonDown("Jump")) {
-			player.transform.SetParent(null);
-			player.gameObject.SetActive(true);
-			this.GetComponent<Breakable>().Break();
-			BreakEvents.InvokeBreak(this.gameObject, BreakEvents.BreakableThings.SeedPod);
-			Destroy(gameObject);
+		if (playersInside.Count > 0) {
+			var someoneJumped = false;
+			for (int i = 0; i < playersInside.Count; i++) {
+				if (ReInput.players.GetPlayer(playersInside[i].PlayerNum).GetButtonDown("Jump")) {
+					someoneJumped = true;
+					break;
+				}
+			}
+
+			if (someoneJumped) {
+				for (int i = 0; i < playersInside.Count; i++) {
+					playersInside[i].transform.SetParent(null);
+					playersInside[i].gameObject.SetActive(true);
+				}
+
+				this.GetComponent<Breakable>().Break();
+				BreakEvents.InvokeBreak(this.gameObject, BreakEvents.BreakableThings.SeedPod);
+				Destroy(gameObject);
+			}
 		}
 	}
 
 	public void OnTriggerEnter(Collider collider) {
 		var colliderTrans = collider.transform;
-		if (colliderTrans.CompareTag(Tags.PLAYER_TAG)) {
+		if (!ignorePlayers && colliderTrans.CompareTag(Tags.PLAYER_TAG)) {
+			var player = colliderTrans.gameObject.GetComponent<CouchPlayer>();
+			if (playersInside.Contains(player)) {
+				return;
+			}
+
+			playersInside.Add(player);
 			colliderTrans.SetParent(transform);
-			player = colliderTrans.gameObject.GetComponent<CouchPlayer>();
 			player.gameObject.SetActive(false);
 			colliderTrans.localPosition = new Vector3(0f, 0f, 0f);
+
+			LeanTween.alphaCanvas(hintText.GetComponent<CanvasGroup>(), 1f, 1f).setDelay(2f);
 		}
+	}
+
+	public void IgnorePlayers(bool doIgnore) {
+		this.ignorePlayers = doIgnore;
 	}
 }

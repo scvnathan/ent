@@ -123,5 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23646f558904b09b73231e29b8da8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualResourceToAttach: {fileID: 1536907688902164, guid: b75fe08519f2a5c4cb9e7ddb6bc07758,
+  visualResourceToAttach: {fileID: 1536907688902164, guid: 07137a91b39b77848a5499f3cf28dfc6,
     type: 2}

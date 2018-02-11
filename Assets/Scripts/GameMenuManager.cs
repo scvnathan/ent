@@ -18,13 +18,15 @@ public class GameMenuManager : MonoBehaviour {
 	private bool loading;
 
 	private void Awake() {
+		loading = false;
 		defaultPlayers = inGamePlayers.value;
 		UpdatePlayersText(inGamePlayers.value);
 	}
 
 	public void NewGame() {
 		loading = true;
-		LeanTween.alphaCanvas(uiGroup, 0f, 3f).setOnComplete(() => {
+		GetComponentInChildren<TextExpandFader>().Expand(3f);
+		LeanTween.alphaCanvas(uiGroup, 0f, 1.8f).setOnComplete(() => {
 			SceneManager.LoadScene(scene);
 		});
 	}
@@ -58,6 +60,6 @@ public class GameMenuManager : MonoBehaviour {
 	}
 
 	public void UpdatePlayersText(int num) {
-		playersText.text = $"<mark=#ffff00aa> {num} </mark> PLAYERS";
+		playersText.text = $"{num} PLAYERS";
 	}
 }

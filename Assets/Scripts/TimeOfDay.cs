@@ -11,6 +11,9 @@ public class TimeOfDay : MonoBehaviour {
 	public Color dayColor;
 	public Color nightColor;
 	private Color currentColor;
+	
+	[ReadOnly]
+	public float currentTime;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +35,7 @@ public class TimeOfDay : MonoBehaviour {
 		set {
 			_time = value % 1f;
 			SetLight (_time);
+			currentTime = _time;
 		}
 	}
 

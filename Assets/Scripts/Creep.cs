@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Asyncoroutine;
-using Events;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Creep : MonoBehaviour {
 	public IntVariable inGamePlayers;
@@ -11,8 +11,6 @@ public class Creep : MonoBehaviour {
 	public int CurrentResources => currentResources;
 	
 	private int victoryCreep;
-	[Range(1,10)]
-	public int numberOfCreepSpreadsUntilVictory = 3;
 
 	[ReadOnly]
 	public int creepStage = 0;
@@ -37,17 +35,22 @@ public class Creep : MonoBehaviour {
 	}
 
 	private void OnEnable() {
-		ResourceEvents.OnDeposit += TrackGrowth;
+		Events.ResourceEvents.OnDeposit += TrackGrowth;
 	}
 	
 	private void OnDisable() {
-		ResourceEvents.OnDeposit -= TrackGrowth;
+		Events.ResourceEvents.OnDeposit -= TrackGrowth;
 	}
 
 	private void TrackGrowth(ResourceData resourceData, object depositer) {
 		currentResources += resourceData.value;
-		if (currentResources % (victoryCreep / numberOfCreepSpreadsUntilVictory) == 0) {
+		
+		if (currentResources % (victoryCreep / creepStages.Count) == 0) {
 			Grow();
+		}
+
+		if (creepStage == creepStages.Count - 1) {
+			Events.CreepEvents.InvokeFinalCreep();
 		}
 	}
 

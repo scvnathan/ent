@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Events;
 using Rewired;
 
 
@@ -26,7 +25,7 @@ public class SeedPod : MonoBehaviour {
 				}
 
 				this.GetComponent<Breakable>().Break();
-				BreakEvents.InvokeBreak(this.gameObject, BreakEvents.BreakableThings.SeedPod);
+				Events.BreakEvents.InvokeBreak(this.gameObject, Events.BreakEvents.BreakableThings.SeedPod);
 				Destroy(gameObject);
 			}
 		}

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Events;
 using RootMotion;
 using UnityEngine;
 
@@ -24,16 +23,16 @@ public class SeedpodSpawner : MonoBehaviour {
 	}
 
 	private void OnEnable() {
-		BreakEvents.OnBreak += OnBroke;
+		Events.BreakEvents.OnBreak += OnBroke;
 	}
 
 
 	private void OnDisable() {
-		BreakEvents.OnBreak -= OnBroke;
+		Events.BreakEvents.OnBreak -= OnBroke;
 	}
 
-	private void OnBroke(GameObject obj, BreakEvents.BreakableThings breakableThing) {
-		if (breakableThing == BreakEvents.BreakableThings.SeedPod) {
+	private void OnBroke(GameObject obj, Events.BreakEvents.BreakableThings breakableThing) {
+		if (breakableThing == Events.BreakEvents.BreakableThings.SeedPod) {
 			pods.Remove(obj);
 		}
 	}
@@ -48,7 +47,7 @@ public class SeedpodSpawner : MonoBehaviour {
 				pod.transform.localScale = Vector3.zero;
 				var seedpod = pod.GetComponent<SeedPod>();					
 				seedpod.IgnorePlayers(true);
-				BreakEvents.InvokeSpawn(pod);
+				Events.BreakEvents.InvokeSpawn(pod);
 				pods.Add(pod);
 
 				this.spawning = true;

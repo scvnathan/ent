@@ -1,20 +1,21 @@
 ﻿using System;
 using Asyncoroutine;
-using Events;
 using UnityEngine;
 
 public class Well : MonoBehaviour {
 	public GameObject depositEffect;
 	private Light light;
+	private int resourcesDeposited;
 
 	private void Start() {
 		light = GetComponentInChildren<Light>();
 	}
 
+
 	private void OnTriggerEnter(Collider other) {
 		PlayerEntered(other);
 	}
-
+	
 	private void PlayerEntered(Collider other) {
 		if (other.CompareTag(Tags.PLAYER_TAG)) {
 			var player = other.GetComponent<CouchPlayer>();
@@ -26,8 +27,10 @@ public class Well : MonoBehaviour {
 	}
 
 	private async void Deposit(ResourceData resourceDataObject, CouchPlayer player) {
+		resourcesDeposited = resourcesDeposited + resourceDataObject.value;
+		
 		//trigger deposit event, with player and resource
-		ResourceEvents.InvokeDeposit(resourceDataObject, player);
+		Events.ResourceEvents.InvokeDeposit(resourceDataObject, player);
 		//depositEffect.GetComponent<ParticleSystem>().emission.enabled = true;
 		Destroy(resourceDataObject.gameObject);
 		
@@ -41,6 +44,5 @@ public class Well : MonoBehaviour {
 		}, 1.5f, 0f, ps.main.duration).setEaseOutCirc().setOnComplete(() => {
 			light.enabled = false;
 		});
-		//TOOD:play an animation visual?
 	}
 }

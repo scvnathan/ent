@@ -1,7 +1,5 @@
 using System;
-using Events;
 using Rewired;
-using Events;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 

@@ -754,6 +754,26 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
       value: 30.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 59b65d2fbb1ef7b4fa0b8c80295f741b, type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 59b65d2fbb1ef7b4fa0b8c80295f741b, type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 59b65d2fbb1ef7b4fa0b8c80295f741b, type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 59b65d2fbb1ef7b4fa0b8c80295f741b, type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 59b65d2fbb1ef7b4fa0b8c80295f741b, type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59b65d2fbb1ef7b4fa0b8c80295f741b, type: 2}
   m_IsPrefabParent: 0
@@ -3903,7 +3923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf4f99be50c6b344b0172b0ad659987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutesPerDay: 1
+  minutesPerDay: 0.5
   dayColor: {r: 0.9411765, g: 0.9764706, b: 0.8862745, a: 1}
   nightColor: {r: 0.3492647, g: 0.3492647, b: 0.5, a: 0}
   currentTime: 0
@@ -11417,6 +11437,49 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1791095903}
   m_Mesh: {fileID: 4300006, guid: 2ebc0b300319506458c8fedbf305148b, type: 3}
+--- !u!1 &1811585391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1811585393}
+  - component: {fileID: 1811585392}
+  m_Layer: 0
+  m_Name: MonitorWinLose
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1811585392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1811585391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad3be13ea21946bdaf52761e9df4cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winScene: Win
+  loseScene: Lose
+  timeOfDay: {fileID: 728623920}
+--- !u!4 &1811585393
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1811585391}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1830695075
 Prefab:
   m_ObjectHideFlags: 0

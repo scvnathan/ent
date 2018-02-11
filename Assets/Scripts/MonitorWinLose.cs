@@ -2,9 +2,10 @@
 using UnityEngine.SceneManagement;
 
 public class MonitorWinLose : MonoBehaviour {
-	private string winScene;
-	private string loseScene;
+	public string winScene;
+	public string loseScene;
 	public TimeOfDay timeOfDay;
+	private bool lost;
 
 	// Use this for initialization
 	void Start () {
@@ -12,7 +13,8 @@ public class MonitorWinLose : MonoBehaviour {
 	}
 
 	public void Update() {
-		if (timeOfDay && timeOfDay.CurrentTime == 1f) {
+		if (!lost && timeOfDay && timeOfDay.CurrentTime >= 0.98f) {
+			lost = true;
 			SceneManager.LoadScene(loseScene);	
 		}
 	}

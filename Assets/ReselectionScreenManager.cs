@@ -34,7 +34,7 @@ public class ReselectionScreenManager : MonoBehaviour {
 
 		UpdateSelectionDot();
 
-		if (firstPlayer.GetButtonDown("A")) {
+		if (firstPlayer.GetButtonDown("Jump")) {
 			Process();
 		}
 	}

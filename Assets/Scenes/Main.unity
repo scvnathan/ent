@@ -774,6 +774,10 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
       value: 30.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 59b65d2fbb1ef7b4fa0b8c80295f741b, type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59b65d2fbb1ef7b4fa0b8c80295f741b, type: 2}
   m_IsPrefabParent: 0
@@ -3051,7 +3055,7 @@ Prefab:
     - target: {fileID: 20014533681175584, guid: 5578994f6950ee949a9d92423056cd92,
         type: 2}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294963199
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114190844412874948, guid: 5578994f6950ee949a9d92423056cd92, type: 2}
@@ -3923,7 +3927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf4f99be50c6b344b0172b0ad659987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutesPerDay: 0.5
+  minutesPerDay: 5
   dayColor: {r: 0.9411765, g: 0.9764706, b: 0.8862745, a: 1}
   nightColor: {r: 0.3492647, g: 0.3492647, b: 0.5, a: 0}
   currentTime: 0
